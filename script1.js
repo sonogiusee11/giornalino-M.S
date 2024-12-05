@@ -1,52 +1,78 @@
-// login.js
-document.getElementById("login-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  const email = document.getElementById("email").value.trim();
-  if (email) {
-    // Salva l'email dell'utente nel localStorage (puoi usare anche sessionStorage)
-    localStorage.setItem("userEmail", email);
-    window.location.href = "index.html"; // Reindirizza all'articolo
-  } else {
-    alert("Per favore inserisci una email valida.");
-  }
-});
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
 
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-  const commentForm = document.getElementById("comment-form");
-  const commentInput = document.getElementById("comment-input");
-  const commentSection = document.getElementById("comment-section");
+header {
+  background-color: #007acc;
+  padding: 10px 0;
+}
 
-  // Verifica se l'utente è loggato
-  const userEmail = localStorage.getItem("userEmail");
-  if (!userEmail) {
-    alert("Per favore effettua il login per commentare.");
-    window.location.href = "login.html"; // Reindirizza alla pagina di login
-  }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
-  commentForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-    const commentText = commentInput.value.trim();
-    if (commentText) {
-      // Aggiungi il commento con l'email dell'utente
-      const commentElement = document.createElement("div");
-      commentElement.classList.add("comment");
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
 
-      const commentHeader = document.createElement("p");
-      commentHeader.classList.add("username");
-      commentHeader.textContent = userEmail;
+.container {
+  display: flex;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+}
 
-      const commentBody = document.createElement("p");
-      commentBody.textContent = commentText;
+.immagine {
+  width: 40%;
+  border-radius: 45px;
+  object-fit: cover;
+}
 
-      commentElement.appendChild(commentHeader);
-      commentElement.appendChild(commentBody);
+.testo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
 
-      commentSection.appendChild(commentElement);
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-      commentInput.value = "";
-    }
-  });
-});
+p {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer {
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
